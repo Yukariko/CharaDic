@@ -21,9 +21,9 @@ namespace CharaDic.net
     }
     class VNDBParser
     {
-        static async public Task<List<VNCharacter>> GetCharacters(int vnId)
+        static async public Task<List<VNCharacter>> GetCharacters(string url)
         {
-            string url = "https://vndb.org/v" + vnId;
+//            string url = "https://vndb.org/v" + vnId;
             //            await VNDB.sem.WaitAsync();
             try
             {

@@ -24,31 +24,52 @@ namespace CharaDic
     public partial class MainWindow : Window
     {
         CharacterNameTranslator cntranslator = new CharacterNameTranslator();
+        List<VNCharacter> chars = null;
+        CharacterDictionary dic = null;
 
         public MainWindow()
         {
             InitializeComponent();
-            printChars();
         }
 
 
-        public async void printChars()
+        public async void getChars(string url)
         {
-            var chars = await VNDBParser.GetCharacters(13188);
+            chars = await VNDBParser.GetCharacters(url);
             Console.WriteLine(chars.Count);
             translateAll(chars);
-            foreach (var character in chars)
-            {
-                Console.WriteLine(character.japName + " " + character.engName + " " + character.korName);
-            }
-            CharacterDictionary dic = new CharacterDictionary(@"C:\Program Files (x86)\ChangShinSoft\ezTrans XP\Ehnd\UserDict_@Hdor#name.txt", "Ehnd");
-            dic.push(chars);
+            CharacterListBox.ItemsSource = chars;
         }
 
         public void translateAll(List<VNCharacter> chars)
         {
             foreach (var character in chars)
                 character.korName = cntranslator.translate(character.engName);
+        }
+
+        private void FindGameBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                getChars(FindGameBox.Text);
+            }
+        }
+
+
+        private void DictionaryPushBox_Click(object sender, RoutedEventArgs e)
+        {
+            //CharacterDictionary dic = new CharacterDictionary(@"C:\Program Files (x86)\ChangShinSoft\ezTrans XP\Ehnd\UserDict_@Hdor#name.txt", "Ehnd");
+            if (DictionaryPathBox.Text == "" || chars == null)
+                return;
+            dic = new CharacterDictionary(DictionaryPathBox.Text, "Ehnd");
+            dic.push(chars);
+        }
+
+        private void DictionaryRestoreBox_Click(object sender, RoutedEventArgs e)
+        {
+            if (dic == null)
+                return;
+            dic.restore();
         }
     }
 }

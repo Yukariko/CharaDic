@@ -33,24 +33,10 @@ namespace CharaDic.file
         {
             string[] lines;
 
-            if (!File.Exists(path + ".bak"))
-            {
-                lines = File.ReadAllLines(path);
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter(path + ".bak"))
-                {
-                    foreach (var line in lines)
-                    {
-                        file.WriteLine(line);
-                    }
+            if (File.Exists(path))
+                File.Copy(path, path + ".bak", false);
 
-                    file.Close();
-                }
-            }
-
-            else
-            {
-                lines = File.ReadAllLines(path + ".bak");
-            }
+            lines = File.ReadAllLines(path + ".bak");
 
             using (System.IO.StreamWriter file = new System.IO.StreamWriter(path))
             {
@@ -67,6 +53,10 @@ namespace CharaDic.file
 
                 file.Close();
             }
+        }
+        public void restore()
+        {
+            File.Copy(path + ".bak", path, true);
         }
     }
 }
