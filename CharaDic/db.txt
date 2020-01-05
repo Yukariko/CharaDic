@@ -4,6 +4,7 @@ u 우
 e 에
 o 오
 ka 카
+ca 카
 ki 키
 ku 쿠
 ke 케
@@ -23,7 +24,8 @@ zi 지
 ji 지
 zu 즈
 ze 제
-zo 조 
+zo 조
+jo 조
 ta 타
 ti 티
 chi 치
@@ -44,6 +46,7 @@ no 노
 ha 하
 hi 히
 hu 후
+fu 후
 he 헤
 ho 호
 ba 바
@@ -142,7 +145,7 @@ rin 린
 run 룬
 ren 렌
 ron 론
-wan 완
+wan 왕
 kya 캬
 kyu 큐
 kye 켸
@@ -160,6 +163,7 @@ juu 쥬
 jyo 죠
 tya 탸
 tyu 튜
+chu 츄
 tyo 툐
 dya 댜
 dyu 듀
@@ -192,7 +196,15 @@ gyon 굔
 syan 샨
 shun 슌
 shon 숀
+nyan 냥
 jyan 쟌
 jyon 죤
 hyon 횬
-
+it 잇
+kit 킷
+shit 싯
+nit 닛
+hat 핫
+hit 힛
+mit 밋
+rit 릿
